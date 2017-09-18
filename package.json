@@ -1,0 +1,27 @@
+{
+  "name": "react-image-theme-parser",
+  "version": "0.1.0",
+  "description": "Create ARIA-compliant color themes based on any image.",
+  "main": "lib/index.js",
+  "author": "Brandon Dail",
+  "license": "MIT",
+  "scripts": {
+    "build": "babel src --out-dir lib --source-maps"
+  },
+  "dependencies": {
+    "babel-preset-env": "^1.6.0",
+    "color": "^2.0.0",
+    "color-thief": "^2.2.2",
+    "lodash.isequal": "^4.5.0",
+    "lodash.sortby": "^4.7.0",
+    "lodash.uniq": "^4.5.0",
+    "lodash.uniqby": "^4.7.0",
+    "react": "^15.6.1",
+    "rgbaster.js": "^1.0.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-react": "^6.24.1",
+    "jest": "^21.1.0"
+  }
+}
