@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
-import "./App.css";
 import ImagePaletteProvider from "react-image-theme-parser";
 
 var images = [
@@ -22,7 +20,7 @@ class App extends Component {
           <ImagePaletteProvider image={image}>
             {({ backgroundColor, color, alternativeColor }) => (
               <div>
-                <img src={image} style={{ height: 300 }} />
+                <img alt="" src={image} style={{ height: 300 }} />
                 <div
                   style={{
                     backgroundColor,
