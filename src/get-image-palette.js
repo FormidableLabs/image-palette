@@ -1,8 +1,21 @@
+// @flow
 import uniqBy from "lodash.uniqby";
 import isEqual from "lodash.isequal";
 import sortBy from "lodash.sortby";
 import ColorThief from "./color-thief";
 import Color from "color";
+
+type ColorDescriptor = {
+  color: Color,
+  score: number,
+  contrast: number
+};
+
+type ColorPairings = Array<ColorDescriptor>;
+
+type ColorPairingMap = {
+  [key: string]: ColorPairings
+}
 
 // This is the minimum required for "AA" certification
 const MINIMUM_CONTRAST_RATIO = 4.5;
@@ -21,11 +34,11 @@ let RGBToPixelCountMap = {};
  * of how dominant one range might be.
  * 
  * @example
- * For the RGB value [250, 100, 10] we can see
+ * For the RGB value [250, 30, 10] we can see
  * that the red channel dominates, meaning it will be
  * primarily red.
  */
-function getRGBRange(color) {
+function getRGBRange(color: Color) {
   var rgb = sortBy(color.rgb().array()).reverse();
   var [max, med, min] = rgb;
   return max - min;
@@ -38,8 +51,8 @@ function getRGBRange(color) {
  * @param {*} color 
  * @returns {number}
  */
-function getPixelDominance(color) {
-  const pixelCount = RGBToPixelCountMap[color];
+function getPixelDominance(color: Color) {
+  const pixelCount: number = RGBToPixelCountMap[color];
   return pixelCount / totalPixelCount;
 }
 
@@ -58,7 +71,7 @@ function calculateTotalPairScore(pairs) {
  * Return a new array of pairs, sorted by score.
  * @param {*} pairs 
  */
-function sortPairsByScore(pairs) {
+function sortPairsByScore(pairs: ColorPairings) {
   pairs.sort((a, b) => {
     if (a.score === b.score) {
       return 0;
@@ -86,9 +99,9 @@ function sortPairsByScore(pairs) {
  *    vibrance.
  * @param {*} WCAGCompliantColorPairs 
  */
-function getMostDominantPrimaryColor(WCAGCompliantColorPairs) {
+function getMostDominantPrimaryColor(WCAGCompliantColorPairs: ColorPairingMap) {
   var highestDominanceScore = 0;
-  var mostDominantColor = null;
+  var mostDominantColor = "";
   for (var dominantColor in WCAGCompliantColorPairs) {
     var pairs = WCAGCompliantColorPairs[dominantColor];
     var dominance = getPixelDominance(dominantColor);
@@ -103,7 +116,15 @@ function getMostDominantPrimaryColor(WCAGCompliantColorPairs) {
   return mostDominantColor;
 }
 
-function getColorPalette(image, colorThief) {
+/**
+ * Gets the palette for an image from color-thief and maps
+ * the colors to Color instances. It also re-initializes
+ * and updates the RGBToPixelCountMap so we get a fresh
+ * dataset for pixel dominance
+ * @param {string} image 
+ * @param {ColorThief} colorThief 
+ */
+function getColorPalette(image, colorThief: ColorThief) : Array<Color> {
   totalPixelCount = 0;
   RGBToPixelCountMap = {};
   return colorThief.getPalette(image).map(color => {
@@ -114,11 +135,23 @@ function getColorPalette(image, colorThief) {
   });
 }
 
-export default function getImagePalette(image, colorThief) {
+/**
+ * The main export that takes an image URI and optional instance
+ * of color-thief and generates the palletes. Responsible for
+ * building the WCAGCompliantColorPairs map and generating
+ * accessible color pairings.
+ * 
+ * Returns an object with a backgroundColor, color, and alternativeColor.
+ * If there's only one potential color pairing, alternativeColor will
+ * just be color.
+ * @param {*} image 
+ * @param {*} colorThief 
+ */
+export default function getImagePalette(image: string, colorThief: ColorThief) {
   colorThief = colorThief || new ColorThief();
   var palletes = getColorPalette(image, colorThief);
   var highestMatchCount = 0;
-  var WCAGCompliantColorPairs = {};
+  var WCAGCompliantColorPairs : ColorPairingMap = {};
   palletes.forEach((dominantColor, index) => {
     var pairs = (WCAGCompliantColorPairs[dominantColor] = []);
     palletes.forEach(color => {
@@ -137,7 +170,7 @@ export default function getImagePalette(image, colorThief) {
          *    we want some vibrant colors
          */
         var range = getRGBRange(color);
-        /**
+        /**0
          * If the contrast isn't high enough, lighten/darken
          * the color so that we get a more accessible
          * version of the color.
@@ -162,5 +195,5 @@ export default function getImagePalette(image, colorThief) {
     backgroundColor,
     color: color.color.hex(),
     alternativeColor: alternativeColor.color.hex()
-  }
+  };
 }

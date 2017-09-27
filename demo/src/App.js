@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import logo from "./logo.svg";
 import "./App.css";
-import ImageThemeParser from "react-image-theme-parser";
+import ImagePaletteProvider from "react-image-theme-parser";
 
 var images = [
   require("./wowee.jpg"),
@@ -19,19 +19,19 @@ class App extends Component {
     return (
       <div className="App">
         {images.map(image => (
-          <ImageThemeParser image={image}>
-            {({ primary, secondary, tertiary }) => (
+          <ImagePaletteProvider image={image}>
+            {({ backgroundColor, color, alternativeColor }) => (
               <div>
                 <img src={image} style={{ height: 300 }} />
                 <div
                   style={{
-                    backgroundColor: primary,
-                    color: secondary,
+                    backgroundColor,
+                    color,
                     margin: 20,
                     padding: 5
                   }}
                 >
-                  <span style={{ color: tertiary }}>
+                  <span style={{ color: alternativeColor }}>
                     Lorem ipsum dolor sit
                   </span>, amet consectetur adipisicing elit. Distinctio
                   expedita architecto deserunt. Id dicta, veniam inventore
@@ -40,7 +40,7 @@ class App extends Component {
                 </div>
               </div>
             )}
-          </ImageThemeParser>
+          </ImagePaletteProvider>
         ))}
       </div>
     );
