@@ -33,7 +33,13 @@ export default class ImagePaletteProvider extends React.Component {
 
   render() {
     const { colors } = this.state;
-    const { children } = this.props;
-    return colors ? children(colors) : null;
+    const { children, render } = this.props;
+    const callback = render || children;
+    if (!callback) {
+      throw new Error(
+        "ImagePaletteProvider expects a render callback either as a child or via the `render` prop"
+      );
+    }
+    return colors ? callback(colors) : null;
   }
 }
