@@ -17,6 +17,7 @@ type ColorPairingMap = {
   [key: string]: ColorPairings
 }
 
+const THRESHOLD_CONTRAST_RATIO = 1.0;
 // This is the minimum required for "AA" certification
 const MINIMUM_CONTRAST_RATIO = 4.5;
 const IDEAL_CONTRAST_RATIO = 7.5;
@@ -41,7 +42,7 @@ let RGBToPixelCountMap = {};
 function getRGBRange(color: Color) {
   var rgb = sortBy(color.rgb().array()).reverse();
   var [max, med, min] = rgb;
-  return max - min;
+  return (max - min) / 10;
 }
 
 /**
@@ -156,7 +157,7 @@ export default function getImagePalette(image: string, colorThief: ColorThief) {
     var pairs = (WCAGCompliantColorPairs[dominantColor] = []);
     palletes.forEach(color => {
       var contrast = dominantColor.contrast(color);
-      if (contrast > MINIMUM_CONTRAST_RATIO) {
+      if (contrast > THRESHOLD_CONTRAST_RATIO) {
         /**
          * The score is determined based three things:
          * 
@@ -175,21 +176,38 @@ export default function getImagePalette(image: string, colorThief: ColorThief) {
          * the color so that we get a more accessible
          * version of the color.
          */
-        if (contrast < IDEAL_CONTRAST_RATIO) {
-          var delta = (IDEAL_CONTRAST_RATIO - contrast) / 15;
-          color = dominantColor.dark()
-            ? color.lighten(delta)
-            : color.darken(delta);
+        if (contrast < MINIMUM_CONTRAST_RATIO) {
+          var delta = (MINIMUM_CONTRAST_RATIO - contrast) / 20;
+          var lighten = dominantColor.dark();
+          while (contrast < MINIMUM_CONTRAST_RATIO) {
+            var newColor = lighten ? color.lighten(delta) : color.darken(delta);
+            // If the new color is the same as the old one, we're not getting any
+            // lighter or darker so we need to stop.
+            if (newColor.hex() === color.hex()) {
+              break;
+            }
+            var newContrast = dominantColor.contrast(newColor);
+            // If the new contrast is lower than the old contrast
+            // then we need to start moving the other direction in the spectrum
+            if (newContrast < contrast) {
+              lighten = !lighten;
+            }
+            color = newColor;
+            contrast = newContrast;
+          }
         }
-        var score = contrast - index + range;
+        var score = contrast + range;
         pairs.push({ color, score, contrast });
       }
     });
   });
   var backgroundColor = getMostDominantPrimaryColor(WCAGCompliantColorPairs);
-  var [color, alternativeColor] = WCAGCompliantColorPairs[backgroundColor];
+  var [color, alternativeColor, accentColor] = WCAGCompliantColorPairs[backgroundColor];
   if (!alternativeColor) {
     alternativeColor = color;
+  }
+  if (!accentColor) {
+    accentColor = alternativeColor;
   }
   return {
     backgroundColor,
