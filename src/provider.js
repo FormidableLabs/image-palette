@@ -27,7 +27,7 @@ export default class ImagePaletteProvider extends React.Component {
 
   onImageError() {
     if (this.props.defaults) {
-      this.setState({ colors: this.props.defaults })
+      this.setState({ colors: this.props.defaults });
     }
   }
 
