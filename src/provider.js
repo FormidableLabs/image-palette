@@ -10,6 +10,7 @@ export default class ImagePaletteProvider extends React.Component {
 
   componentDidMount() {
     const image = (this.image = new Image());
+    image.crossOrigin = "Anonymous";
     image.src = this.props.image;
     image.onload = this.onImageload;
   }
