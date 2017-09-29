@@ -1,6 +1,6 @@
 {
   "name": "react-image-palette",
-  "version": "0.1.2",
+  "version": "0.1.1",
   "description": "Create ARIA-compliant color themes based on any image.",
   "main": "lib/index.js",
   "author": "Brandon Dail",
@@ -8,7 +8,7 @@
   "scripts": {
     "build": "babel src --out-dir lib --source-maps",
     "prepublish": "npm run build",
-    "version": "np --no-yarn",
+    "preversion": "npm run test",
     "test": "npm run build && karma start --single-run --browsers ChromeHeadless karma.conf.js"
   },
   "dependencies": {
@@ -33,7 +33,6 @@
     "karma-mocha-reporter": "^2.2.4",
     "karma-webpack": "^2.0.4",
     "mocha": "^3.5.3",
-    "np": "^2.16.0",
     "react-dom": "^16.0.0",
     "url-loader": "^0.5.9",
     "webpack": "^3.6.0"
