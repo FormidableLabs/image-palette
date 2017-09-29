@@ -7,11 +7,5 @@ dist: trusty # needs Ubuntu Trusty
 sudo: false  # no need for virtualization.
 addons:
   chrome: stable # have Travis install chrome stable.
-cache:
-  yarn: true
-  directories:
-    - node_modules
-install:
-  - yarn
 script:
   - yarn test
