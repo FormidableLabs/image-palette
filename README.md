@@ -3,12 +3,13 @@
 
 <h1 align="center">react-image-palette</h1>
 
-![react-image-palette demo](./screenshot.png)
-
 
 <h4 align="center">
   Dynamically generate accessible color palettes from images
 </h4>
+
+![react-image-palette demo](./screenshot.png)
+
 
 
 Implement adaptive UIs based from any image in right in your React application. Every palette is generated based on the most dominant and vibrant colors and guaranteed to meet the [WCAG contrast standard](https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-contrast.html) for accessible color pairings.
