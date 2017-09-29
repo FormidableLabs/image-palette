@@ -15,6 +15,10 @@ export default class ImagePaletteProvider extends React.Component {
     image.onload = this.onImageload;
   }
 
+  componentWillUnmount() {
+    this.image.onload = null;
+  }
+
   onImageload() {
     var image = this.image;
     var colors = getImagePalette(this.image);
