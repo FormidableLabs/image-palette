@@ -66,12 +66,11 @@ class App extends Component {
     return (
       <div style={{ fontFamily: "Nunito", padding: 30, textAlign: "center" }}>
         <h1 style={{ fontSize: 40, marginBottom: 0 }}>
-          <pre>
-            react-image-palette
-          </pre>
+          <pre>react-image-palette</pre>
         </h1>
-        <p style={{ maxWidth: '50%', margin: 'auto' }}>
-          Search for an artist to see generated color palettes for all the album art in their discog.
+        <p style={{ maxWidth: "50%", margin: "auto" }}>
+          Search for an artist to see generated color palettes for all the album
+          art in their discog.
         </p>
         <br />
         <div

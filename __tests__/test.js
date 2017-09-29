@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import ReactImagePalette from "../lib";
-import image from './fairlight.png';
+import image from "./fairlight.png";
 
 // Album cover for Com Truise - Fairlight
 

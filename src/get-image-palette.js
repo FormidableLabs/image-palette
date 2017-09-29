@@ -15,7 +15,7 @@ type ColorPairings = Array<ColorDescriptor>;
 
 type ColorPairingMap = {
   [key: string]: ColorPairings
-}
+};
 
 const THRESHOLD_CONTRAST_RATIO = 1.0;
 // This is the minimum required for "AA" certification
@@ -125,7 +125,7 @@ function getMostDominantPrimaryColor(WCAGCompliantColorPairs: ColorPairingMap) {
  * @param {string} image 
  * @param {ColorThief} colorThief 
  */
-function getColorPalette(image, colorThief: ColorThief) : Array<Color> {
+function getColorPalette(image, colorThief: ColorThief): Array<Color> {
   totalPixelCount = 0;
   RGBToPixelCountMap = {};
   return colorThief.getPalette(image).map(color => {
@@ -152,7 +152,7 @@ export default function getImagePalette(image: string, colorThief: ColorThief) {
   colorThief = colorThief || new ColorThief();
   var palletes = getColorPalette(image, colorThief);
   var highestMatchCount = 0;
-  var WCAGCompliantColorPairs : ColorPairingMap = {};
+  var WCAGCompliantColorPairs: ColorPairingMap = {};
   palletes.forEach((dominantColor, index) => {
     var pairs = (WCAGCompliantColorPairs[dominantColor] = []);
     palletes.forEach(color => {
@@ -202,7 +202,9 @@ export default function getImagePalette(image: string, colorThief: ColorThief) {
     });
   });
   var backgroundColor = getMostDominantPrimaryColor(WCAGCompliantColorPairs);
-  var [color, alternativeColor, accentColor] = WCAGCompliantColorPairs[backgroundColor];
+  var [color, alternativeColor, accentColor] = WCAGCompliantColorPairs[
+    backgroundColor
+  ];
   if (!alternativeColor) {
     alternativeColor = color;
   }
