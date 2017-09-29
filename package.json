@@ -12,7 +12,6 @@
     "build:es": "BABEL_ENV=es babel src --out-dir es",
     "build:lib": "BABEL_ENV= babel src --out-dir lib",
     "clean": "rimraf es && rimraf lib",
-    "prepublish": "npm run build",
     "preversion": "npm run test",
     "test:only": "karma start --single-run --browsers ChromeHeadless karma.conf.js",
     "test": "npm run build && npm run test:only",
