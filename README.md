@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.com/FormidableLabs/react-image-palette.svg?token=ycKCGETrX5nV3P6ePUdx&branch=master)](https://travis-ci.com/FormidableLabs/react-image-palette)
+
+
 <h1 align="center">react-image-palette</h1>
 
 <h4 align="center">
