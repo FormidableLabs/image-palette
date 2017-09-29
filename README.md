@@ -65,7 +65,7 @@ Both `alternativeColor` and `color` are guaranteed to meet the minimum contrast 
 ### Props
 
 Property  	| 	Type		|	  Description
-:-----------------------|:-----------------------------|:--------------|:--------------------------------
+:-----------------------|:--------------|:--------------------------------
 `image` |   `String!` |  The URL for the image to parse.
 `crossOrigin` | `Boolean` | Sets the `crossOrigin` property on the `Image` instance that loads the source image <sup>1</sup>
 `render` | `Palette => ReactElement` | If you prefer to use a `render` prop over a function child, go for it! `react-image-palette` supports both.
