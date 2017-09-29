@@ -6,6 +6,7 @@ export default class ImagePaletteProvider extends React.Component {
     super(...args);
     this.state = { colors: null };
     this.onImageload = this.onImageload.bind(this);
+    this.onImageError = this.onImageError.bind(this);
   }
 
   componentDidMount() {
@@ -13,10 +14,12 @@ export default class ImagePaletteProvider extends React.Component {
     image.crossOrigin = this.props.crossOrigin;
     image.src = this.props.image;
     image.onload = this.onImageload;
+    image.onerror = this.onImageError;
   }
 
   componentWillUnmount() {
     this.image.onload = null;
+    this.image.onerror = null;
   }
 
   onImageload() {
