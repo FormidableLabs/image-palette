@@ -3,6 +3,9 @@
 
 <h1 align="center">react-image-palette</h1>
 
+![react-image-palette demo](./screenshot.png)
+
+
 <h4 align="center">
   Dynamically generate accessible color palettes from images
 </h4>
