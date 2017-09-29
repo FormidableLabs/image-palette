@@ -23,10 +23,11 @@ describe("react-image-palette", () => {
       expect(style.color).to.equal("#EF4E2E");
       expect(style.alternativeColor).to.equal("#D17872");
       done();
-      // Return an empty div so React doesn't throw an error
-      // about an empty return
-      return React.createElement("div");
-    };
-    ReactDOM.render(React.createElement(TestComponent, { render }), container);
+  describe("getImagePallete", () => {
+    it("should export getImagePallete for imperative use", done => {
+      const image = new Image();
+      image.src = testImage;
+      image.onload = () => renderWithExpect(done, getImagePalette(image));
+    });
   });
 });
