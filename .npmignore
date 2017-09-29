@@ -1,3 +1,9 @@
-demo
-__tests__
-karma.conf.js
+/*
+!/lib
+lib/*.map
+!/es
+es/*.map
+!/src
+!LICENSE.txt
+!README.md
+!package.json
