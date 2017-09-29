@@ -1,3 +1,7 @@
-demo
-__tests__
-karma.conf.js
+/*
+!/lib
+!/es
+!/src
+!LICENSE.txt
+!README.md
+!package.json
