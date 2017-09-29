@@ -1,0 +1,97 @@
+.container {
+  font-family: 'Nunito', sans-serif;
+  text-align: center;
+  padding: 5px;
+}
+
+.title {
+  font-size: 20px;
+  margin-bottom: 0px;
+}
+
+.search--container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  max-width: 362px;
+  margin: 10px auto;
+}
+
+.search--input {
+  box-sizing: border-box;
+  height: 40px;
+  font-size: 16px;
+  padding: 10px;
+  border: 1px solid #efefef;
+  outline: none;
+  width: 100%;
+}
+
+.search--button {
+  background-color: #37474f;
+  color: #ffffff;
+  font-size: 14px;
+  border: none;
+  width: 20%;
+}
+
+.album--container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.album {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 400px;
+  padding: 30px;
+  margin: 10px 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.album img {
+  width: 280px;
+}
+
+.spinner--container {
+  display: flex;
+  align-items: center;
+  height: 200px;
+}
+
+.github-ribbon {
+  display: none;
+}
+
+
+
+@media screen and (min-width: 350px) {
+  .title {
+    font-size: 25px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .title {
+    font-size: 35px;
+  }
+  .album {
+    width: 400px;
+    margin: 20px;
+  }
+  .album img {
+    width: 300px;
+  }
+  .github-ribbon {
+    display: block;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .title {
+    font-size: 40px;
+  }
+}
