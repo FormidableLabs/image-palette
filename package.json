@@ -10,7 +10,7 @@
   "scripts": {
     "build": "npm run clean && npm run build:es && npm run build:lib",
     "build:es": "BABEL_ENV=es babel src --out-dir es",
-    "build:lib": "BABEL_ENV= babel src --out-dir lib",
+    "build:lib": "BABEL_ENV=commonjs babel src --out-dir lib",
     "clean": "rimraf es && rimraf lib",
     "preversion": "npm run test",
     "test:only": "karma start --single-run --browsers ChromeHeadless karma.conf.js",
@@ -33,7 +33,6 @@
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
-    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.0",
     "babel-preset-env": "^1.6.0",
     "babel-preset-react": "^6.24.1",
     "chai": "^4.1.2",
