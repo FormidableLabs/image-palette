@@ -7,10 +7,9 @@
   ],
   "env": {
     "commonjs": {
-      "plugins": [
-        ["transform-es2015-modules-commonjs", {
-          "strict": false,
-          "allowTopLevelThis": true
+      "presets": [
+        ["env", {
+          "modules": "commonjs"
         }]
       ]
     }
