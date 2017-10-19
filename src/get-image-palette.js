@@ -138,7 +138,7 @@ function getColorPalette(image, colorThief: ColorThief): Array<Color> {
 
 /**
  * The main export that takes an image URI and optional instance
- * of color-thief and generates the palletes. Responsible for
+ * of color-thief and generates the palettes. Responsible for
  * building the WCAGCompliantColorPairs map and generating
  * accessible color pairings.
  * 
@@ -150,12 +150,12 @@ function getColorPalette(image, colorThief: ColorThief): Array<Color> {
  */
 export default function getImagePalette(image: string, colorThief: ColorThief) {
   colorThief = colorThief || new ColorThief();
-  var palletes = getColorPalette(image, colorThief);
+  var palettes = getColorPalette(image, colorThief);
   var highestMatchCount = 0;
   var WCAGCompliantColorPairs: ColorPairingMap = {};
-  palletes.forEach((dominantColor, index) => {
+  palettes.forEach((dominantColor, index) => {
     var pairs = (WCAGCompliantColorPairs[dominantColor] = []);
-    palletes.forEach(color => {
+    palettes.forEach(color => {
       var contrast = dominantColor.contrast(color);
       if (contrast > THRESHOLD_CONTRAST_RATIO) {
         /**
