@@ -14,7 +14,7 @@ class TestComponent extends React.Component {
 let container;
 
 const renderWithExpect = (done, palette) => {
-  expect(palette.backgroundColor).to.equal("rgb(60, 16, 32)");
+  expect(palette.backgroundColor).to.equal("#3C1020");
   expect(palette.color).to.equal("#EF4E2E");
   expect(palette.alternativeColor).to.equal("#D17872");
   done();
