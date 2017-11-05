@@ -25,10 +25,7 @@
   },
   "dependencies": {
     "color": "^2.0.0",
-    "lodash.isequal": "^4.5.0",
-    "lodash.sortby": "^4.7.0",
-    "lodash.uniq": "^4.5.0",
-    "lodash.uniqby": "^4.7.0",
+    "colorable-dominant": "~1.0.0",
     "react": "^16.0.0"
   },
   "devDependencies": {
