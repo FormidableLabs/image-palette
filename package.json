@@ -2,7 +2,8 @@
    "name": "image-palette",
    "private": true,
    "scripts": {
-     "test": "lerna run test"
+     "test": "lerna run test",
+     "build": "lerna run build"
    },
    "devDependencies": {
       "babel-cli": "^6.26.0",
