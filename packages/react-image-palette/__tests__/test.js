@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import ReactImagePalette, { getImagePalette } from "../lib";
+import ReactImagePalette from "../lib";
 // Album cover for Com Truise - Fairlight
 import testImage from "./fairlight.png";
 
@@ -55,13 +55,6 @@ describe("react-image-palette", () => {
         }),
         container
       );
-    });
-  });
-  describe("getImagePallete", () => {
-    it("should export getImagePallete for imperative use", done => {
-      const image = new Image();
-      image.src = testImage;
-      image.onload = () => renderWithExpect(done, getImagePalette(image));
     });
   });
 });

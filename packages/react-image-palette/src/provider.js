@@ -1,5 +1,5 @@
 import React from "react";
-import getImagePalette from "./get-image-palette";
+import getImagePalette from "image-palette-core";
 
 export default class ImagePaletteProvider extends React.Component {
   constructor(...args) {
