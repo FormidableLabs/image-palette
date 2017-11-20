@@ -6,9 +6,9 @@ module.exports = config => {
     //   }
     // },
     frameworks: ['mocha', 'chai'],
-    files: ['__tests__/**/*.js'],
+    files: ['./packages/**/__tests__/**/*.js'],
     preprocessors: {
-      '__tests__/**/*.js': ['webpack']
+      './packages/**/__tests__/**/*.js': ['webpack']
     },
     webpack: {
       module: {

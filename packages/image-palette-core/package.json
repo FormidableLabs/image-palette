@@ -1,0 +1,26 @@
+{
+  "name": "image-palette-core",
+  "version": "0.2.1",
+  "description": "Create ARIA-compliant color themes based on any image.",
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "jsnext:main": "es/index.js",
+  "author": "Brandon Dail",
+  "license": "MIT",
+  "scripts": {
+    "build": "npm run clean && npm run build:es && npm run build:lib",
+    "build:es": "BABEL_ENV=es babel src --out-dir es",
+    "build:lib": "BABEL_ENV=commonjs babel src --out-dir lib",
+    "clean": "rimraf es lib",
+    "preversion": "npm run test",
+    "test:only": "karma start --single-run --browsers ChromeHeadless ../../karma.conf.js",
+    "test": "npm run build && npm run test:only"
+  },
+  "dependencies": {
+    "color": "^2.0.0",
+    "lodash.isequal": "^4.5.0",
+    "lodash.sortby": "^4.7.0",
+    "lodash.uniq": "^4.5.0",
+    "lodash.uniqby": "^4.7.0"
+  }
+}
