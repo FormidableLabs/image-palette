@@ -1,6 +1,6 @@
 {
   "name": "react-image-palette",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Create ARIA-compliant color themes based on any image.",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -11,16 +11,18 @@
     "build": "npm run clean && npm run build:es && npm run build:lib",
     "build:es": "BABEL_ENV=es babel src --out-dir es",
     "build:lib": "BABEL_ENV=commonjs babel src --out-dir lib",
-    "clean": "rimraf es && rimraf lib",
+    "clean": "rimraf es lib",
     "preversion": "npm run test",
     "test:only": "karma start --single-run --browsers ChromeHeadless ../../karma.conf.js",
     "test": "npm run build && npm run test:only"
   },
   "dependencies": {
-    "image-palette-core": "^0.2.0",
-    "react": "^16.0.0"
+    "image-palette-core": "^0.2.1"
   },
   "devDependencies": {
     "react-dom": "^16.1.0"
+  },
+  "peerDependencies": {
+    "react": "^15.0.0 | ^16.0.0"
   }
 }
