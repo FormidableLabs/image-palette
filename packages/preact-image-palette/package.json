@@ -1,0 +1,28 @@
+{
+  "name": "preact-image-palette",
+  "version": "0.1.0",
+  "description": "Create ARIA-compliant color themes based on any image.",
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "jsnext:main": "es/index.js",
+  "author": "Brandon Dail",
+  "license": "MIT",
+  "scripts": {
+    "build": "npm run clean && npm run build:es && npm run build:lib",
+    "build:es": "BABEL_ENV=es babel src --out-dir es",
+    "build:lib": "BABEL_ENV=commonjs babel src --out-dir lib",
+    "clean": "rimraf es lib",
+    "preversion": "npm run test",
+    "test:only": "karma start --single-run --browsers ChromeHeadless ../../karma.conf.js",
+    "test": "npm run build && npm run test:only"
+  },
+  "dependencies": {
+    "image-palette-core": "^0.2.1"
+  },
+  "devDependencies": {
+    "preact": "^8.0.0"
+  },
+  "peerDependencies": {
+    "preact": "^8.0.0"
+  }
+}
