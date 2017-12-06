@@ -1,6 +1,6 @@
 {
   "name": "react-image-palette",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Create ARIA-compliant color themes based on any image.",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -17,7 +17,7 @@
     "test": "npm run build && npm run test:only"
   },
   "dependencies": {
-    "image-palette-core": "^0.2.1"
+    "image-palette-core": "^0.2.2"
   },
   "devDependencies": {
     "react-dom": "^16.1.0"
