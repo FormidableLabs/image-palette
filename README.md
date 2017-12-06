@@ -20,3 +20,4 @@ This repository is setup as a monorepo with the following packages:
 
 * [`image-palette-core`](https://github.com/FormidableLabs/image-palette/tree/master/packages/image-palette-core) - core logic for parsing palettes from images
 * [`react-image-palette`](https://github.com/FormidableLabs/image-palette/tree/master/packages/react-image-palette) - A React adapter for `image-palette-core`
+* [`preact-image-palette`](https://github.com/FormidableLabs/image-palette/tree/master/packages/peact-image-palette) - A Preact adapter for `image-palette-core`
