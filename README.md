@@ -6,7 +6,7 @@
   Dynamically generate accessible color palettes from images
 </h4>
 
-![image-palette demo](./screenshot.png)
+![image-palette demo](./screenshot.jpg)
 
 Implement adaptive UIs dynamically from any image in right in the browser. Every
 palette is parsed from the most dominant and vibrant colors in the source image,
