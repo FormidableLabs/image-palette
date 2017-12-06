@@ -1,6 +1,6 @@
 {
   "name": "image-palette-core",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Create ARIA-compliant color themes based on any image.",
   "main": "lib/index.js",
   "module": "es/index.js",
