@@ -34,7 +34,7 @@ const SomeComponent = ({ image }) => (
 
 ### Palette
 
-See the [`image-palette-core` documentation](https://github.com/FormidableLabs/tree/master/packages/image-palette-core#the-palette)
+See the [`image-palette-core` documentation](https://github.com/FormidableLabs/image-palette/tree/master/packages/image-palette-core#the-palette)
 
 ### Props
 
