@@ -5,6 +5,10 @@
      "test": "lerna run test",
      "build": "lerna run build"
    },
+   "repository": {
+      "type": "git",
+      "url": "https://github.com/FormidableLabs/image-palette.git"
+    },
    "devDependencies": {
       "babel-cli": "^6.26.0",
       "babel-preset-env": "^1.6.0",
