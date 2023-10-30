@@ -16,6 +16,11 @@
     "test:only": "karma start --single-run --browsers ChromeHeadless ../../karma.conf.js",
     "test": "npm run build && npm run test:only"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/FormidableLabs/image-palette.git",
+    "directory": "packages/react-image-palette"
+  },
   "dependencies": {
     "image-palette-core": "^0.2.2"
   },
